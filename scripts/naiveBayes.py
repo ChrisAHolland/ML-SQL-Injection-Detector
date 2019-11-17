@@ -99,7 +99,7 @@ def main():
                 correct += 1
 
         result = correct / len(result)
-        f = open('results.txt', 'w')
+        f = open('../results/NBResults.txt', 'w')
         f.write("Training Files: test.txt, testlabs.txt\n")
         f.write("Test Files: test.txt, testlabs.txt\n")
         f.write("Result: ")
@@ -119,7 +119,7 @@ def main():
                 correct += 1
 
         result = correct / len(result)
-        f = open('results.txt', 'a')
+        f = open('../results/NBResults.txt', 'a')
         f.write("\n\n")
         f.write("Training Files: test.txt, testlabs.txt\n")
         f.write("Test Files: test.txt, testlabs.txt\n")
