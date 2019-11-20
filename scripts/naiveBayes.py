@@ -7,7 +7,7 @@ Trains a multinomial model.
 Partially based on pseudocodegiven in class.
 '''
 def trainMultinomial():
-    with open("test.txt", "r") as trainData, open("testlabs.txt", "r") as trainLabels:
+    with open("../data/OWASP-jbrofuzz-payload.txt", "r") as trainData, open("../data/OWASP-labels.txt", "r") as trainLabels:
         numClass1 = lines = wordCount1 = wordCount0 = 0
         vocab1 = {}
         vocab0 = {}
@@ -86,7 +86,7 @@ def main():
     probC = trained[4]
     totalVocab = trained[5]
 
-    with open("test.txt", "r") as trainData, open("testlabs.txt", "r") as trainLabels:
+    with open("../data/OWASP-jbrofuzz-payload.txt", "r") as trainData, open("../data/OWASP-labels.txt", "r") as trainLabels:
         labelLines = trainLabels.readlines()
         result = []
         correct = 0
@@ -99,14 +99,14 @@ def main():
                 correct += 1
 
         result = correct / len(result)
-        f = open('../results/NBResults.txt', 'w')
-        f.write("Training Files: test.txt, testlabs.txt\n")
-        f.write("Test Files: test.txt, testlabs.txt\n")
+        f = open('../results/OWASP-Results.txt', 'w')
+        f.write("Training Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt\n")
+        f.write("Test Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt\n")
         f.write("Result: ")
         f.write(str(result))
         f.close()
 
-    with open("test.txt", "r") as trainData, open("testlabs.txt", "r") as trainLabels:
+    with open("../data/burp-suite-payload.txt", "r") as trainData, open("../data/burp-labels.txt", "r") as trainLabels:
         labelLines = trainLabels.readlines()
         result = []
         correct = 0
@@ -119,13 +119,33 @@ def main():
                 correct += 1
 
         result = correct / len(result)
-        f = open('../results/NBResults.txt', 'a')
+        f = open('../results/OWASP-Results.txt', 'a')
         f.write("\n\n")
-        f.write("Training Files: test.txt, testlabs.txt\n")
-        f.write("Test Files: test.txt, testlabs.txt\n")
+        f.write("Training Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt\n")
+        f.write("Test Files: burp-suite-payload.txt, burp-labels.txt\n")
         f.write("Result: ")
         f.write(str(result))
-        f.write("\n")
+        f.close()
+
+    with open("../data/OWASP-jbrofuzz-payload.txt", "r") as trainData, open("../data/OWASP-labels.txt", "r") as trainLabels:
+        labelLines = trainLabels.readlines()
+        result = []
+        correct = 0
+
+        for i, line in enumerate(trainData):
+            result.append(applyMultinomial(line, vocabProb1, vocabProb0, wordCount1, wordCount0, probC, totalVocab))
+
+        for i in range(0, len(result) - 1):
+            if result[i] == int(labelLines[i].strip()):
+                correct += 1
+
+        result = correct / len(result)
+        f = open('../results/OWASP-Results.txt', 'a')
+        f.write("\n\n")
+        f.write("Training Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt\n")
+        f.write("Test Files: fuzzdb-payload.txt, fuzzdb-labels.txt\n")
+        f.write("Result: ")
+        f.write(str(result))
         f.close()
 
 if __name__ == "__main__":

@@ -1,2 +1,4 @@
 # ML-SQL-Injection-Detector
-Research for determining the best classifier for detecting SQL Injections.
+This repository contains data, scripts, and results related to my exploraty project for SEng 474, Data Mining, with Professor I. Alex Thomo.  
+
+The methods and findings will be present in the PDF report in this repo.
