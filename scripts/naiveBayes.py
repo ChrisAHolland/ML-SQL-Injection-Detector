@@ -127,7 +127,7 @@ def main():
         f.write(str(result))
         f.close()
 
-    with open("../data/OWASP-jbrofuzz-payload.txt", "r") as trainData, open("../data/OWASP-labels.txt", "r") as trainLabels:
+    with open("../data/fuzzdb-payload.txt", "r") as trainData, open("../data/fuzzdb-labels.txt", "r") as trainLabels:
         labelLines = trainLabels.readlines()
         result = []
         correct = 0
