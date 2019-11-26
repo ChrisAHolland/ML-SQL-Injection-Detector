@@ -1,6 +1,6 @@
 Training Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt
 Test Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt
-Result: 0.9940119760479041
+Result: 0.9666666666666667
 
 Training Files: OWASP-jbrofuzz-payload.txt, OWASP-labels.txt
 Test Files: burp-suite-payload.txt, burp-labels.txt
